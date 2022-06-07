@@ -170,5 +170,13 @@ public class IndexController {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 	
-	
+	//MÉTODO PARA PESQUISAR POR NOME
+	@GetMapping(value = "/usuarioPorNome/{nome}", produces = "application/json")
+	public ResponseEntity<List<Usuario>> usuarioPorNome(@PathVariable("nome") String nome){
+		
+		List<Usuario> list = (List<Usuario>) usuarioRepository.findUserByNome(nome);
+		
+		
+		return new ResponseEntity<List<Usuario>>(list, HttpStatus.OK);
+	}
 }

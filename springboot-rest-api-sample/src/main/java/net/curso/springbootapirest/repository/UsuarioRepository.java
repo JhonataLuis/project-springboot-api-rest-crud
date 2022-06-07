@@ -19,5 +19,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	@Modifying//PARA ATUALIZAR NO BANCO DE DADOS
 	@Query(nativeQuery = true, value = "update Usuario set token = ?1 where login = ?2")
 	void atualizaTokenUser(String token, String login);
+	
+	@Query("select u from Usuario u where u.nome like %?1%")
+	Usuario findUserByNome(String nome);
 }
 		                                                              
